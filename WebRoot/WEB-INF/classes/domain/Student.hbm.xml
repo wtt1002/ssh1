@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+<hibernate-mapping>
+	
+	<class name="domain.Student" table="cst_student">
+		<id name="UID" column="UID">
+			<generator class="native"/>
+		</id>
+		
+		<property name="studentId" column="studentId"/>
+		<property name="password" column="password"/>
+		<property name="studentName" column="studentName"/>
+		<property name="clazzId" column="clazzId"/>
+		<property name="sInfo" column="sInfo"/>
+		
+		          <!-- clazz  student:1-* 配置多方 -->
+        <many-to-one name="clazz" class="domain.Clazz" column="clazz_id"  cascade="save-update,persist"/>
+        
+                  <!-- student  homeworkInfo:1-* 配置一方 -->
+        <set name="homeworkInfos" lazy="false">
+           <key column="student_id"/>
+           <one-to-many class="domain.HomeworkInfo"/>
+        </set>
+        
+                  <!-- studentinfo  student:1-1  -->
+        <many-to-one name="studentInfo" column="stu_info" class="domain.StudentInfo" cascade="save-update" unique="true"/>
+        
+        
+	</class>
+	
+</hibernate-mapping>    

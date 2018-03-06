@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+<hibernate-mapping>
+	
+	<class name="domain.HomeworkInfo" table="cst_homeworkInfo">
+		<id name="UID" column="UID">
+			<generator class="native"/>
+		</id>
+		
+		<property name="hworkInfoId" column="hworkInfoId"/>
+		<property name="homeworkId" column="homeworkId"/>
+		<property name="studentId" column="studentId"/>
+		<property name="description" column="description"/>
+		<property name="score" column="score"/>
+		<property name="address" column="address"/>
+		<property name="checked" column="checked"/>
+		<property name="checkMan" column="checkMan"/>
+		
+				          <!-- homework  homeworkInfo:1-* 配置多方 -->
+        <many-to-one name="homework" class="domain.Homework" column="homework_id"  cascade="save-update,persist"/>
+        
+        		          <!-- student  homeworkInfo:1-* 配置多方 -->
+        <many-to-one name="student" class="domain.Student" column="student_id"  cascade="save-update,persist"/>
+
+		
+	</class>
+	
+</hibernate-mapping>    

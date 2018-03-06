@@ -12,6 +12,7 @@ import domain.Course;
 import domain.Customer;
 import domain.Manager;
 import domain.Student;
+import domain.StudentInfo;
 import domain.Teacher;
 import service.ClazzService;
 import service.CourseService;
@@ -19,6 +20,8 @@ import service.CustomerService;
 import service.CustomerServiceImpl;
 import service.ManagerService;
 import service.ManagerServiceImpl;
+import service.StudentInfoService;
+import service.StudentService;
 import service.TeacherService;
 
 import org.junit.Test;
@@ -36,6 +39,8 @@ public class ManagerTest {
 	private ClazzService clazzService;
 	@Resource(name="courseService")
 	private CourseService courseService;
+	@Resource(name="studentInfoService")
+	private StudentInfoService studentInfoService;
 	/**
 	 * 测试
 	 */
@@ -131,6 +136,15 @@ public class ManagerTest {
 		course.setTeacherId("20170001");
 		//courseService.saveCourse(course);
 		courseService.addCourse(course);
+	}
+	
+	@Test
+	public void addStudentInfo()
+	{
+		StudentInfo studentInfo=new StudentInfo();
+		studentInfo.setStudent(managerService.findByStudentId("2017282110250"));
+		studentInfo.setStudentId("2017282110250");
+		studentInfoService.addStuInfo(studentInfo);
 	}
 	
 

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+<hibernate-mapping>
+	
+	<class name="domain.Teacher" table="cst_teacher">
+		<id name="UID" column="UID">
+			<generator class="native"/>
+		</id>
+		
+		<property name="teacherId" column="teacherId"/>
+		<property name="teacherName" column="teacherName"/>
+		<property name="gender" column="gender"/>
+		<property name="password" column="password"/>
+		
+		       <!-- teacher  homework:1-* 配置一方 -->
+        <set name="homeworks">
+           <key column="teacher_id"/>
+           <one-to-many class="domain.Homework"/>
+        </set>
+        		       <!-- teacher  course:1-* 配置一方 -->
+        <set name="courses">
+           <key column="teacher_id"/>
+           <one-to-many class="domain.Course"/>
+        </set>
+	</class>
+	
+</hibernate-mapping>    
