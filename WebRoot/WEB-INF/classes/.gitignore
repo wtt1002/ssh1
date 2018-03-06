@@ -1,0 +1,9 @@
+/applicationContext.xml
+/dao
+/domain
+/hibernate.cfg.xml
+/log4j.properties
+/service
+/struts.xml
+/test
+/web

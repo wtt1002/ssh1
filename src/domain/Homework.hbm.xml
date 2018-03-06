@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+<hibernate-mapping>
+	
+	<class name="domain.Homework" table="cst_homework">
+		<id name="UID" column="UID">
+			<generator class="native"/>
+		</id>
+		
+		<property name="homeworkId" column="homeworkId"/>
+		<property name="hworkInfoId" column="hworkInfoId"/>
+		<property name="teacherId" column="teacherId"/>
+		<property name="courseId" column="courseId"/>
+		<property name="releaseDate" column="releaseDate"/>
+		<property name="deadlineDate" column="deadlineDate"/>
+		<property name="description" column="description"/>
+		
+		            <!-- teacher  homwork:1-* 配置多方 -->
+        <many-to-one name="teacher" class="domain.Teacher" column="teacher_id" cascade="save-update"/>
+        
+                    <!-- homework  homeworkInfo:1-* 配置一方 -->
+        <set name="homeworkInfos" lazy="false">
+           <key column="homework_id"/>
+           <one-to-many class="domain.HomeworkInfo"/>
+        </set>
+     				<!-- course  homework:1-* 配置多方 -->
+     	<many-to-one name="course" class="domain.Course" column="course_id" cascade="save-update"/>		
+        
+	</class>
+	
+</hibernate-mapping>    

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+<hibernate-mapping>
+	
+	<class name="domain.Manager" table="cst_manager">
+		<id name="UID" column="UID">
+			<generator class="native"/>
+		</id>
+		
+		<property name="managerId" column="managerId"/>
+		<property name="password" column="password"/>
+		<property name="managerName" column="managerName"/>
+		
+	</class>
+	
+</hibernate-mapping>    

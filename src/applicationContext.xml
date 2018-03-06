@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop.xsd
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx.xsd">
+	
+	<!-- 编写bean，名称都是固定的，加载hibernate.cfg.xml的配置文件 -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<property name="configLocation" value="classpath:hibernate.cfg.xml"/>
+	</bean>
+	
+	<!-- 先配置平台事务管理器 -->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<!-- 开启事务注解 -->
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	
+	
+	<!-- 配置action，必须多例 ，scope="prototype"-->
+	<bean id="customerAction" class="web.action.CustomerAction" scope="prototype">
+		<property name="customerService" ref="customerService"/>
+	</bean>
+	
+	<bean id="customerService" class="service.CustomerServiceImpl">
+		<property name="customerDao" ref="customerDao"/>
+	</bean>
+	
+	<!-- 以后：dao都需要继承HibernateDaoSupport类，注入sessionFactory -->
+	<bean id="customerDao" class="dao.CustomerDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	
+	
+	
+	<!-- 配置action，必须多例 ，scope="prototype"-->
+	<bean id="managerAction" class="web.action.ManagerAction" scope="prototype">
+		<property name="managerService" ref="managerService"/>
+	</bean>
+	
+				<!-- manager配置 -->
+	<bean id="managerService" class="service.ManagerServiceImpl">
+		<property name="managerDao" ref="managerDao"/>
+		<property name="studentService" ref="studentService"/>
+		<property name="teacherService" ref="teacherService"/>
+		<property name="clazzService" ref="clazzService"/>
+	</bean>
+	
+	<bean id="managerDao" class="dao.ManagerDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="studentDao" class="dao.StudentDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="teacherDao" class="dao.TeacherDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="clazzDao" class="dao.ClazzDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="homeworkDao" class="dao.HomeworkDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="homeworkInfoDao" class="dao.HomeworkInfoDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="courseDao" class="dao.CourseDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+				<!-- clazz配置 -->
+	<bean id="clazzService" class="service.ClazzServiceImpl">
+		<property name="clazzDao" ref="clazzDao"/>
+	</bean>
+	
+				<!-- teacher配置 -->
+	<bean id="teacherService" class="service.TeacherServiceImpl">
+		<property name="teacherDao" ref="teacherDao"/>
+		<property name="homeworkService" ref="homeworkService"/>
+		<property name="studentService" ref="studentService"/>
+	</bean>
+	
+				<!-- student配置 -->
+	<bean id="studentService" class="service.StudentServiceImpl">
+		<property name="studentDao" ref="studentDao"/>
+	</bean>
+	
+				<!-- homework配置 -->
+	<bean id="homeworkService" class="service.HomeworkServiceImpl">
+		<property name="homeworkDao" ref="homeworkDao"/>
+	</bean>
+	
+				<!-- homeworkInfo配置 -->
+	<bean id="homeworkInfoService" class="service.HomeworkInfoServiceImpl">
+		<property name="homeworkInfoDao" ref="homeworkInfoDao"/>
+	</bean>
+				<!-- course配置 -->
+	<bean id="courseService" class="service.CourseServiceImpl">
+		<property name="courseDao" ref="courseDao"/>
+	</bean>
+	
+	<!-- 	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate5.HibernateTemplate">
+		</bean> -->
+	
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+

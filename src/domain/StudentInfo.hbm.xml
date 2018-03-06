@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+<hibernate-mapping>
+	
+	<class name="domain.StudentInfo" table="cst_studentInfo">
+		<id name="UID" column="UID">
+			<generator class="native"/>
+		</id>
+		
+		<property name="enrollDate" column="enrollDate"/>
+		<property name="bitrthday" column="bitrthday"/>
+		<property name="gender" column="gender"/>
+		<property name="phone" column="phone"/>
+		<property name="description" column="description"/>
+		<property name="createMan" column="createMan"/>
+		<property name="createClass" column="createClass"/>
+		<property name="createDate" column="createDate"/>
+		<property name="changeMan" column="changeMan"/>
+		<property name="changeDate" column="changeDate"/>
+		<property name="studentId" column="studentId"/>
+
+		            <!-- studentinfo  student:1-1  -->
+            <one-to-one name="student" property-ref="studentInfo"/>
+
+		
+	</class>
+	
+</hibernate-mapping>    

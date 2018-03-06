@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+<hibernate-mapping>
+	
+	<class name="domain.Clazz" table="cst_clazz">
+		<id name="UID" column="UID">
+			<generator class="native"/>
+		</id>
+		
+		<property name="clazzId" column="clazzId"/>
+		<property name="clazzName" column="clazzName"/>
+
+            <!-- class  student:1-* 配置一方 -->
+        <set name="students" lazy="false">
+           <key column="clazz_id"/>
+           <one-to-many class="domain.Student"/>
+        </set>
+        
+	</class>
+	
+</hibernate-mapping>    
