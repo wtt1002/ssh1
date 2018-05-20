@@ -108,7 +108,7 @@ A.active {
 				<TR>
 					<TD width=15><IMG src="images/new_005.jpg" border=0></TD>
 					<TD align=middle width=180 background=images/new_006.jpg
-						height=35><B>人力资源 －功能菜单</B></TD>
+						height=35><B>课程管理 －功能菜单</B></TD>
 					<TD width=15><IMG src="images/new_007.jpg" border=0></TD>
 				</TR>
 			</TBODY>
@@ -117,12 +117,12 @@ A.active {
 			<TBODY>
 				<TR>
 					<TD width=15 background=images/new_008.jpg></TD>
-					<TD vAlign=top width=180 bgColor=#ffffff>
+					<TD align="justify" vAlign=top width=180 bgColor=#ffffff>
 						<TABLE cellSpacing=0 cellPadding=3 width=165 align=center border=0>
 							<TBODY>
 								<TR>
 									<TD class=mainMenu onClick="MenuDisplay('table_1');"><SPAN
-										class=span id=table_1Span>＋</SPAN> 客户管理</TD>
+										class=span id=table_1Span>＋</SPAN> 班级管理</TD>
 								</TR>
 								<TR>
 									<TD>
@@ -130,12 +130,12 @@ A.active {
 											cellPadding=2 width=155 align=center border=0>
 											<TBODY>
 												<TR>
-													<TD class=menuSmall><A class=style2 href="${pageContext.request.contextPath }/jsp/manager/add.jsp" 
-														target=main>－ 新增客户</A></TD>
+													<TD class=menuSmall><A class=style2 href="${pageContext.request.contextPath }/jsp/clazz/add.jsp" 
+														target=main>－ 新增班级</A></TD>
 												</TR>
 												<TR> 
-													<TD class=menuSmall><A class=style2 href="customerServlet?method=list"
-														target=main>－ 客户列表</A></TD>
+													<TD class=menuSmall><A class=style2 href="${pageContext.request.contextPath }/jsp/clazz/list.jsp"
+														target=main>－ 班级维护</A></TD>
 												</TR>
 												
 											</TBODY>
@@ -147,7 +147,7 @@ A.active {
 								</TR>
 								<TR>
 									<TD class=mainMenu onClick="MenuDisplay('table_2');"><SPAN
-										class=span id=table_2Span>＋</SPAN> 联系人管理</TD>
+										class=span id=table_2Span>＋</SPAN> 教师管理</TD>
 								</TR>
 								<TR>
 									<TD>
@@ -155,12 +155,12 @@ A.active {
 											cellPadding=2 width=155 align=center border=0>
 											<TBODY>
 												<TR>
-													<TD class=menuSmall><A class=style2 href="linkmanServlet?method=add"
-														target=main>－ 新增联系人</A></TD>
+													<TD class=menuSmall><A class=style2 href="${pageContext.request.contextPath }/jsp/teacher/add.jsp"
+														target=main>－ 新增教师</A></TD>
 												</TR>
 												<TR>
-													<TD class=menuSmall><A class=style2 href="linkmanServlet?method=list"
-														target=main>－联系人列表</A></TD>
+													<TD class=menuSmall><A class=style2 href="${pageContext.request.contextPath }/jsp/teacher/list.jsp"
+														target=main>－ 教师维护</A></TD>
 												</TR>
 												
 											</TBODY>
@@ -172,7 +172,7 @@ A.active {
 								</TR>
 								<TR>
 									<TD class=mainMenu onClick="MenuDisplay('table_5');"><SPAN
-										class=span id=table_5Span>＋</SPAN> 客户拜访管理</TD>
+										class=span id=table_5Span>＋</SPAN> 学生管理</TD>
 								</TR>
 								<TR>
 									<TD>
@@ -180,12 +180,12 @@ A.active {
 											cellPadding=2 width=155 align=center border=0>
 											<TBODY>
 												<TR>
-													<TD class=menuSmall><A class=style2 href="#"
-														target=main>－新增客户拜访</A></TD>
+													<TD class=menuSmall><A class=style2 href="${pageContext.request.contextPath }/jsp/student/add.jsp"
+														target=main>－新增学生</A></TD>
 												</TR>
 												<TR>
-													<TD class=menuSmall><A class=style2 href="#"
-														target=main>－客户拜访列表</A></TD>
+													<TD class=menuSmall><A class=style2 href="${pageContext.request.contextPath }/jsp/student/list.jsp"
+														target=main>－学生维护</A></TD>
 												</TR>
 												
 											</TBODY>
@@ -197,7 +197,7 @@ A.active {
 								</TR>
 								<TR>
 									<TD class=mainMenu onClick="MenuDisplay('table_3');"><SPAN
-										class=span id=table_3Span>＋</SPAN> 综合查询</TD>
+										class=span id=table_3Span>＋</SPAN> 课程管理</TD>
 								</TR>
 								<TR>
 									<TD>
@@ -205,69 +205,12 @@ A.active {
 											cellPadding=2 width=155 align=center border=0>
 											<TBODY>
 												<TR>
-													<TD class=menuSmall><A class=style2 href="#"
-														target=main>－ 客户信息查询</A></TD>
+													<TD class=menuSmall><A class=style2 href="${pageContext.request.contextPath }/jsp/course/add.jsp"
+														target=main>－ 新增课程</A></TD>
 												</TR>
 												<TR>
-													<TD class=menuSmall><A class=style2 href="#"
-														target=main>－ 联系人信息查询</A></TD>
-												</TR>
-												<TR>
-													<TD class=menuSmall><A class=style2 href="#"
-														target=main>－ 客户拜访记录查询</A></TD>
-												</TR>
-											</TBODY>
-										</TABLE>
-									</TD>
-								</TR>
-								<TR>
-									<TD background=images/new_027.jpg height=1></TD>
-								</TR>
-								<TR>
-									<TD class=mainMenu onClick="MenuDisplay('table_4');"><SPAN
-										class=span id=table_4Span>＋</SPAN> 统计分析</TD>
-								</TR>
-								<TR>
-									<TD>
-										<TABLE id=table_4 style="DISPLAY: none" cellSpacing=0
-											cellPadding=2 width=155 align=center border=0>
-											<TBODY>
-												<TR>
-													<TD class=menuSmall><A class=style2 href="#"
-														target=main>－客户行业统计</A></TD>
-												</TR>
-												<TR>
-													<TD class=menuSmall><A class=style2 href="#"
-														target=main>－客户来源统计</A></TD>
-												</TR>
-												
-											</TBODY>
-										</TABLE>
-									</TD>
-								</TR>
-								<TR>
-									<TD background=images/new_027.jpg height=1></TD>
-								</TR>
-								<TR>
-									<TD class=mainMenu onClick="MenuDisplay('table_6');"><SPAN
-										class=span id=table_6Span>＋</SPAN>系统管理</TD>
-								</TR>
-								<TR>
-									<TD>
-										<TABLE id=table_6 style="DISPLAY: none" cellSpacing=0
-											cellPadding=2 width=155 align=center border=0>
-											<TBODY>
-												<TR>
-													<TD class=menuSmall><A class=style2 href="#"
-														target=main>－角色管理</A></TD>
-												</TR>
-												<TR>
-													<TD class=menuSmall><A class=style2 href="#"
-														target=main>－用户管理</A></TD>
-												</TR>
-												<TR>
-													<TD class=menuSmall><A class=style2 href="#"
-														target=main>－数据字典</A></TD>
+													<TD class=menuSmall><A class=style2 href="${pageContext.request.contextPath }/jsp/course/list.jsp"
+														target=main>－ 课程维护</A></TD>
 												</TR>
 											</TBODY>
 										</TABLE>

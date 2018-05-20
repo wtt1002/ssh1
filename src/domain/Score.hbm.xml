@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+<hibernate-mapping>
+	
+	<class name="domain.Score" table="cst_score">
+		<id name="UID" column="UID">
+			<generator class="native"/>
+		</id>
+		
+		<property name="score" column="score"/>
+		<property name="studentId" column="studentId"/>
+		<property name="courseId" column="courseId"/>
+		
+            <!-- student Score :1-* 配置多方 -->
+   <many-to-one name="student" class="domain.Student" column="student_id"  cascade="save-update,persist"/>
+   
+            <!-- course Score :1-* 配置多方 -->
+   <many-to-one name="course" class="domain.Course" column="course_id"  cascade="save-update,persist"/>
+	</class>
+	
+</hibernate-mapping>    

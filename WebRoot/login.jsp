@@ -12,11 +12,18 @@ TD {
 	FONT-SIZE: 12px; COLOR: #ffffff; FONT-FAMILY: 宋体
 }
 </STYLE>
+<META content="MSHTML 6.00.6000.16809" name=GENERATOR>
+<script type="text/javascript">
+	var requestURL = "";
+	requestURL += "${pageContext.request.contextPath }/";
+	var usertype = $("#userType").val();
+	requestURL += usertype;
+	requestURL += "_login.action";
+</script>
 
-<META content="MSHTML 6.00.6000.16809" name=GENERATOR></HEAD>
+</HEAD>
 <BODY>
-<FORM id=form1 name=form1 onsubmit="javascript:return WebForm_OnSubmit();" method=post>
-
+<FORM id=form1 name=loginform action="${pageContext.request.contextPath }/total_login.action" method=post>
 <DIV id=UpdatePanel1>
 <DIV id=div1 
 style="LEFT: 0px; POSITION: absolute; TOP: 0px; BACKGROUND-COLOR: #0066ff"></DIV>
@@ -29,7 +36,7 @@ style="LEFT: 0px; POSITION: absolute; TOP: 0px; BACKGROUND-COLOR: #0066ff"></DIV
 <TABLE cellSpacing=0 cellPadding=0 width=900 align=center border=0>
   <TBODY>
   <TR>
-    <TD style="HEIGHT: 105px"><IMG src="images/login_1.gif" 
+    <TD style="HEIGHT: 105px"><IMG src="#" 
   border=0></TD></TR>
   <TR>
     <TD background=images/login_2.jpg height=300>
@@ -43,16 +50,16 @@ style="LEFT: 0px; POSITION: absolute; TOP: 0px; BACKGROUND-COLOR: #0066ff"></DIV
             <TABLE cellSpacing=0 cellPadding=2 border=0>
               <TBODY>
               <TR>
-                <TD style="HEIGHT: 28px" width=80>登 录 名：</TD>
-                <TD style="HEIGHT: 28px" width=150><INPUT id=txtName 
-                  style="WIDTH: 130px" name=txtName></TD>
+                <TD style="HEIGHT: 28px" width=80>学     号：</TD>
+                <TD style="HEIGHT: 28px" width=150><INPUT id=userId 
+                  style="WIDTH: 130px" name=userId></TD>
                 <TD style="HEIGHT: 28px" width=370><SPAN 
                   id=RequiredFieldValidator3 
-                  style="FONT-WEIGHT: bold; VISIBILITY: hidden; COLOR: white">请输入登录名</SPAN></TD></TR>
+                  style="FONT-WEIGHT: bold; VISIBILITY: hidden; COLOR: white">请输入账号</SPAN></TD></TR>
               <TR>
                 <TD style="HEIGHT: 28px">登录密码：</TD>
                 <TD style="HEIGHT: 28px"><INPUT id=txtPwd style="WIDTH: 130px" 
-                  type=password name=txtPwd></TD>
+                  type=password name=password></TD>
                 <TD style="HEIGHT: 28px"><SPAN id=RequiredFieldValidator4 
                   style="FONT-WEIGHT: bold; VISIBILITY: hidden; COLOR: white">请输入密码</SPAN></TD></TR>
               <TR>
@@ -61,15 +68,18 @@ style="LEFT: 0px; POSITION: absolute; TOP: 0px; BACKGROUND-COLOR: #0066ff"></DIV
                   style="WIDTH: 130px" name=txtcode></TD>
                 <TD style="HEIGHT: 28px">&nbsp;</TD></TR>
               <TR>
-                <TD style="HEIGHT: 18px"></TD>
-                <TD style="HEIGHT: 18px"></TD>
-                <TD style="HEIGHT: 18px"></TD></TR>
+                <TD style="HEIGHT: 18px">用户类型：</TD>
+                <TD style="HEIGHT: 18px" width="180px">
+                    <input type="radio" name="userType" id="userType" value="manager"/><label>管理员</label>  
+            		<input type="radio" name="userType" id="userType" value="teacher"/><label>教师</label>  
+            		<input type="radio" name="userType" id="userType" checked  value="student"/><label>学生</label>  
+                </TD>
+                <TD style="HEIGHT: 28px"></TD></TR>
               <TR>
                 <TD></TD>
                 <TD><INPUT id=btn 
                   style="BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-RIGHT-WIDTH: 0px" 
-                  onclick='javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions("btn", "", true, "", "", false, false))' 
-                  type=image src="images/login_button.gif" name=btn> 
+                   type=image src="images/login_button.gif" name=btn> 
               </TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR>
   <TR>
     <TD><IMG src="images/login_3.jpg" 

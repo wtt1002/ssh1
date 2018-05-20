@@ -41,6 +41,30 @@ P {
 </STYLE>
 
 <META content="MSHTML 6.00.2900.3492" name=GENERATOR>
+<script type="text/javascript">	
+	window.onload = function(){
+		//alert("ehasoihgoihe");
+		document.getElementById("username").innerHTML = "wtt";
+		var usertype = "${userType}";
+		if (usertype == null || usertype == ""){
+			alert("空的")
+		}else{
+			if (usertype == "manager"){
+				document.getElementById("username").innerHTML = "${existManager.managerName}";
+			}
+			else if (usertype == "teacher"){
+				//alert("我进来了1");
+				document.getElementById("username").innerHTML = "${existTeacher.teacherName}";
+			}
+			else if (usertype == "student"){
+				//alert("我进来了2");
+				document.getElementById("username").innerHTML = "${existStudent.studentName}";
+
+			}
+		}
+		
+    }
+</script>
 </HEAD>
 <BODY>
 	<FORM id=form1 name=form1 action="" method=post>
@@ -48,7 +72,7 @@ P {
 			<TBODY>
 				<TR>
 					<TD width=10><IMG src="images/new_001.jpg" border=0></TD>
-					<TD background=images/new_002.jpg><FONT size=5><B>客户关系管理系统v1.0</B></FONT></TD>
+					<TD background=images/new_002.jpg><FONT size=5><B>学生课程管理系统v1.0</B></FONT></TD>
 					<TD background=images/new_002.jpg>
 						<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
 							<TBODY>
@@ -57,11 +81,12 @@ P {
 								</TR>
 								<TR>
 									<TD height=35 align="right">
-										当前用户：XXXX
+										当前用户：${existManager.managerName}
+										<label id="username">123</label>
 										&nbsp;&nbsp;&nbsp;&nbsp;
 										<A href="#" target=_top><FONT color=red>修改密码</FONT></A>
 										&nbsp;&nbsp;&nbsp;&nbsp;
-										<A href="#" target=_top><FONT color=red>安全退出</FONT></A>
+										<A href="${pageContext.request.contextPath }/manager_exit.action" target=_top><FONT color=red>安全退出</FONT></A>
 									</TD>
 								</TR>
 							</TBODY>

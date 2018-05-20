@@ -2,10 +2,13 @@ package service;
 
 import java.util.List;
 
+import org.hibernate.criterion.DetachedCriteria;
 import org.springframework.transaction.annotation.Transactional;
 
 import dao.CourseDao;
+import domain.Clazz;
 import domain.Course;
+import domain.PageBean;
 @Transactional
 public class CourseServiceImpl implements CourseService {
 
@@ -46,6 +49,13 @@ public class CourseServiceImpl implements CourseService {
 	public List<Course> findByTeacherId(String teacherId) {
 		// TODO Auto-generated method stub
 		return courseDao.findByTeacherId(teacherId);
+	}
+
+	@Override
+	public PageBean<Course> findByPage(Integer pageCode, Integer pageSize,
+			DetachedCriteria criteria) {
+		// TODO Auto-generated method stub
+		return courseDao.findByPage(pageCode,pageSize,criteria);
 	}
 
 }

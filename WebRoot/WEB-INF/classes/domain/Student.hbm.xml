@@ -15,6 +15,9 @@
 		<property name="studentName" column="studentName"/>
 		<property name="clazzId" column="clazzId"/>
 		<property name="sInfo" column="sInfo"/>
+		<property name="schoolName" column="schoolName"/>
+		<property name="rollYear" column="rollYear"/>
+		<property name="managerName" column="managerName"/>
 		
 		          <!-- clazz  student:1-* 配置多方 -->
         <many-to-one name="clazz" class="domain.Clazz" column="clazz_id"  cascade="save-update,persist"/>
@@ -27,6 +30,13 @@
         
                   <!-- studentinfo  student:1-1  -->
         <many-to-one name="studentInfo" column="stu_info" class="domain.StudentInfo" cascade="save-update" unique="true"/>
+        
+         <!-- student Score :1-* 配置一方-->
+        <set name="scores" lazy="false">
+        	<key column="student_id"/>
+        	<one-to-many class="domain.Score"/>
+        </set>
+       
         
         
 	</class>

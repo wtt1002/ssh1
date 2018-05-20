@@ -3,6 +3,8 @@ package domain;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 public class Teacher {
 
 	private Integer UID;
@@ -10,9 +12,35 @@ public class Teacher {
 	private String teacherName;
 	private String gender;
 	private String password;
+	private String schoolName;
+	private Integer rollYear;
+	private String managerName;
+	
+	@JSONField(serialize = false)
 	private Set<Homework> homeworks=new HashSet<Homework>();
+	
+	@JSONField(serialize = false)
 	private Set<Course> courses=new HashSet<Course>();
 	
+	
+	public String getManagerName() {
+		return managerName;
+	}
+	public void setManagerName(String managerName) {
+		this.managerName = managerName;
+	}
+	public String getSchoolName() {
+		return schoolName;
+	}
+	public void setSchoolName(String schoolName) {
+		this.schoolName = schoolName;
+	}
+	public Integer getRollYear() {
+		return rollYear;
+	}
+	public void setRollYear(Integer rollYear) {
+		this.rollYear = rollYear;
+	}
 	public Set<Course> getCourses() {
 		return courses;
 	}

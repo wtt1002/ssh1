@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+<hibernate-mapping>
+	
+	<class name="domain.School" table="cst_school">
+		<id name="UID" column="UID">
+			<generator class="native"/>
+		</id>
+		<property name="schoolName" column="schoolName"/>
+		<property name="startYear" column="startYear"/>
+		<property name="schoolId" column="schoolId"/>
+        
+	</class>
+	
+</hibernate-mapping>    

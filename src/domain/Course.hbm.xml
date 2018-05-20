@@ -14,8 +14,8 @@
 		<property name="courseName" column="courseName"/>
 		<property name="teacherId" column="teacherId"/>
 		<property name="credit" column="credit"/>
-		
-		
+		<property name="schoolName" column="schoolName"/>
+		<property name="managerName" column="managerName"/>
 		          <!-- teacher  course:1-* 配置多方 -->
         <many-to-one name="teacher" class="domain.Teacher" column="teacher_id" cascade="save-update"/>
         
@@ -23,6 +23,12 @@
         <set name="homeworks" lazy="false">
            <key column="course_id"/>
            <one-to-many class="domain.Homework"/>
+        </set>
+        
+                    <!-- course  score:1-* 配置一方 -->
+        <set name="scores" lazy="false">
+           <key column="course_id"/>
+           <one-to-many class="domain.Score"/>
         </set>
         
 	</class>

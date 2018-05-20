@@ -122,6 +122,15 @@ public class ManagerServiceImpl implements ManagerService {
 		return clazzService.findById(clazzId);
 	}
 
+	@Override
+	public Manager managerLogin(Manager manager) {
+		
+		return managerDao.managerLogin(manager.getManagerId(), manager.getPassword());
+		// TODO Auto-generated method stub
+		
+		
+	}
+
 
 
 

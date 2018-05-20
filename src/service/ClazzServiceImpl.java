@@ -1,9 +1,13 @@
 package service;
 
+import java.util.List;
+
+import org.hibernate.criterion.DetachedCriteria;
 import org.springframework.transaction.annotation.Transactional;
 
 import dao.ClazzDao;
 import domain.Clazz;
+import domain.PageBean;
 
 @Transactional
 public class ClazzServiceImpl implements ClazzService {
@@ -45,6 +49,40 @@ public class ClazzServiceImpl implements ClazzService {
 	public void saveClazz(Clazz clazz) {
 		// TODO Auto-generated method stub
 		clazzDao.saveClazz(clazz);
+	}
+
+	@Override
+	public List<Clazz> findClazzs(Clazz clazz) {
+		// TODO Auto-generated method stub
+		
+		return clazzDao.findClazzs(clazz);
+	}
+
+	@Override
+	public List<String> findSchools() {
+		// TODO Auto-generated method stub
+		return clazzDao.findSchools();
+	}
+
+	@Override
+	public PageBean<Clazz> findByPage(Integer pageCode, Integer pageSize,
+			DetachedCriteria criteria) {
+		// TODO Auto-generated method stub
+		
+		return clazzDao.findByPage(pageCode,pageSize,criteria);
+	}
+
+	@Override
+	public List<Integer> getYearBySchool(String schoolName) {
+		// TODO Auto-generated method stub
+		return clazzDao.getYearBySchool(schoolName);
+	}
+
+	@Override
+	public List<Clazz> getClazzBySchoolAndYear(String schoolName,
+			Integer rollYear) {
+		// TODO Auto-generated method stub
+		return clazzDao.getClazzBySchoolAndYear(schoolName,rollYear);
 	}
 
 }

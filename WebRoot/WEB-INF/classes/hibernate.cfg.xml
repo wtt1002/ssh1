@@ -31,6 +31,8 @@
 		<mapping resource="domain/HomeworkInfo.hbm.xml"/>
 		<mapping resource="domain/Course.hbm.xml"/>
 		<mapping resource="domain/StudentInfo.hbm.xml"/>
+		<mapping resource="domain/Score.hbm.xml"/>
+		<mapping resource="domain/School.hbm.xml"/>
 		
 	</session-factory>
 	

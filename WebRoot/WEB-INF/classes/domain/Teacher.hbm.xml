@@ -14,14 +14,16 @@
 		<property name="teacherName" column="teacherName"/>
 		<property name="gender" column="gender"/>
 		<property name="password" column="password"/>
-		
+		<property name="schoolName" column="schoolName"/>
+		<property name="rollYear" column="rollYear"/>
+		<property name="managerName" column="managerName"/>
 		       <!-- teacher  homework:1-* 配置一方 -->
         <set name="homeworks">
            <key column="teacher_id"/>
            <one-to-many class="domain.Homework"/>
         </set>
         		       <!-- teacher  course:1-* 配置一方 -->
-        <set name="courses">
+        <set name="courses" lazy="false">
            <key column="teacher_id"/>
            <one-to-many class="domain.Course"/>
         </set>

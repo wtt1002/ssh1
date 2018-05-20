@@ -9,13 +9,42 @@ public class Student {
 	private String studentId;
 	private String password;
 	private String studentName;
+	private String schoolName;
+	private Integer rollYear;
 	private String clazzId;
 	private String sInfo;
+	private String managerName;
 	private Clazz clazz;
 	private Set<HomeworkInfo> homeworkInfos=new HashSet<HomeworkInfo>();
 	private StudentInfo studentInfo;
+	private Set<Score> scores=new HashSet<Score>();
 
 	
+	
+	public String getManagerName() {
+		return managerName;
+	}
+	public void setManagerName(String managerName) {
+		this.managerName = managerName;
+	}
+	public Integer getRollYear() {
+		return rollYear;
+	}
+	public void setRollYear(Integer rollYear) {
+		this.rollYear = rollYear;
+	}
+	public String getSchoolName() {
+		return schoolName;
+	}
+	public void setSchoolName(String schoolName) {
+		this.schoolName = schoolName;
+	}
+	public Set<Score> getScores() {
+		return scores;
+	}
+	public void setScores(Set<Score> scores) {
+		this.scores = scores;
+	}
 	public StudentInfo getStudentInfo() {
 		return studentInfo;
 	}

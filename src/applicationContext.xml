@@ -45,9 +45,38 @@
 	
 	
 	<!-- 配置action，必须多例 ，scope="prototype"-->
+	<bean id="loginAction" class="web.action.LoginAction" scope="prototype">
+		<property name="managerService" ref="managerService"/>
+		<property name="teacherService" ref="teacherService"/>
+		<property name="studentService" ref="studentService"/>
+	</bean>
 	<bean id="managerAction" class="web.action.ManagerAction" scope="prototype">
 		<property name="managerService" ref="managerService"/>
 	</bean>
+	
+	<bean id="clazzAction" class="web.action.ClazzAction" scope="prototype">
+		<property name="clazzService" ref="clazzService"/>
+	</bean>
+	
+	<bean id="schoolAction" class="web.action.SchoolAction" scope="prototype">
+		<property name="schoolService" ref="schoolService"/>
+	</bean>
+	<bean id="teacherAction" class="web.action.TeacherAction" scope="prototype">
+		<property name="teacherService" ref="teacherService"/>
+	</bean>
+	<bean id="studentAction" class="web.action.StudentAction" scope="prototype">
+		<property name="studentService" ref="studentService"/>
+		<property name="clazzService" ref="clazzService"/>
+	</bean>
+	<bean id="courseAction" class="web.action.CourseAction" scope="prototype">
+		<property name="courseService" ref="courseService"/>
+		<property name="teacherService" ref="teacherService"/>
+	</bean>
+	
+	<bean id="scoreAction" class="web.action.ScoreAction" scope="prototype">
+		<property name="scoreService" ref="scoreService"></property>
+	</bean>
+	
 	
 				<!-- manager配置 -->
 	<bean id="managerService" class="service.ManagerServiceImpl">
@@ -81,11 +110,19 @@
 	<bean id="studentInfoDao" class="dao.StudentInfoDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
+	<bean id="schoolDao" class="dao.SchoolDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="scoreDao" class="dao.ScoreDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
 				<!-- clazz配置 -->
 	<bean id="clazzService" class="service.ClazzServiceImpl">
 		<property name="clazzDao" ref="clazzDao"/>
 	</bean>
 	
+
 				<!-- teacher配置 -->
 	<bean id="teacherService" class="service.TeacherServiceImpl">
 		<property name="teacherDao" ref="teacherDao"/>
@@ -111,11 +148,21 @@
 	<bean id="courseService" class="service.CourseServiceImpl">
 		<property name="courseDao" ref="courseDao"/>
 	</bean>
+				<!-- score配置 -->	
+	<bean id="scoreService" class="service.ScoreServiceImpl">
+		<property name="scoreDao" ref="scoreDao"/>
+	</bean>
 	
 				<!-- studentInfo配置 -->
 	<bean id="studentInfoService" class="service.StudentInfoServiceImpl">
 		<property name="studentInfoDao" ref="studentInfoDao"/>
 	</bean>
+	
+				<!-- school配置 -->
+	<bean id="schoolService" class="service.SchoolServiceImpl">
+		<property name="schoolDao" ref="schoolDao"/>
+	</bean>
+	
 	<!-- 	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate5.HibernateTemplate">
 		</bean> -->
 	

@@ -9,7 +9,7 @@ public interface ManagerService {
 
 	//管理员操作
 	public void addManager(Manager manager);
-	
+	public Manager managerLogin(Manager manager);
 	//教师操作
 	public void addTeacher(Teacher teacher);
 	public void delTeacher(Teacher teacher);

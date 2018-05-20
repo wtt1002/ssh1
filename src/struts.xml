@@ -5,8 +5,55 @@
 	
 <struts>
 	<package name="crm" extends="struts-default" namespace="/">
-		<action name="customer_*" class="customerAction" method="{1}"/>	
-		<action name="manager_*" class="managerAction" method="{1}"/>
+		<global-results>
+			<result name="login" type="redirect">/login.jsp</result>
+		</global-results>
+		
+		<action name="total_*" class="loginAction" method="{1}">
+			<result name="login_ok_m" type="redirect">/index.jsp</result>
+			<result name="login_ok_t">/indexT.jsp</result>
+			<result name="login_ok_s" type="redirect">/indexS.jsp</result>
+		</action>
+		<action name="customer_*" class="customerAction" method="{1}">
+		</action>	
+		
+		<action name="manager_*" class="managerAction" method="{1}">
+			<result name="login_ok" type="redirect">/index.jsp</result>
+		</action>
+		
+		<action name="clazz_*" class="clazzAction" method="{1}">
+			<result name="page">/jsp/clazz/list.jsp</result>
+			<result name="delete" type="redirectAction">clazz_list.action</result>
+			<result name="error">/jsp/error.jsp</result>
+			<result name="initUpdate">/jsp/clazz/edit.jsp</result>
+		</action>
+		
+		<action name="school_*" class="schoolAction" method="{1}">
+		</action>
+		<action name="score_*" class="scoreAction" method="{1}">
+			<result name="page_s">/jsp/student/list.jsp</result>
+			<result name="page_c">/jsp/course/list.jsp</result>
+		</action>
+		<action name="teacher_*" class="teacherAction" method="{1}">
+			<result name="page">/jsp/teacher/list.jsp</result>
+			<result name="delete" type="redirectAction">teacher_list.action</result>
+			<result name="error">/jsp/error.jsp</result>
+			<result name="initUpdate">/jsp/teacher/edit.jsp</result>
+		</action>
+		
+		<action name="student_*" class="studentAction" method="{1}">
+			<result name="page">/jsp/student/list.jsp</result>
+			<result name="delete" type="redirectAction">student_list.action</result>
+			<result name="error">/jsp/error.jsp</result>
+			<result name="initUpdate">/jsp/student/edit.jsp</result>
+		</action>
+		
+		<action name="course_*" class="courseAction" method="{1}">
+			<result name="page">/jsp/course/list.jsp</result>
+			<result name="delete" type="redirectAction">course_list.action</result>
+			<result name="error">/jsp/error.jsp</result>
+			<result name="initUpdate">/jsp/course/edit.jsp</result>
+		</action>
 	</package>
     
 </struts>

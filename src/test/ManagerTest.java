@@ -44,6 +44,16 @@ public class ManagerTest {
 	/**
 	 * 测试
 	 */
+	
+	@Test
+	public void manger_clazz(){
+		List<String> list = clazzService.findSchools();
+		System.out.println(list.size());
+		//Clazz clazz = clazzService.findById("20172821106");
+		//System.out.println(clazz.getClazzId());
+	}
+	
+	
 	@Test
 	public void manager_teacher()
 	{

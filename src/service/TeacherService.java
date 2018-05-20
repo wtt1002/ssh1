@@ -2,7 +2,10 @@ package service;
 
 import java.util.List;
 
+import org.hibernate.criterion.DetachedCriteria;
+
 import domain.Homework;
+import domain.PageBean;
 import domain.Student;
 import domain.Teacher;
 
@@ -25,6 +28,11 @@ public interface TeacherService {
 	public void addHomework(Homework homework);
 	public void delHomework(Homework homework);
 	public void updateHomework(Homework homework);
+	public List<String> findSchools();
+	public PageBean<Teacher> findByPage(Integer pageCode, Integer pageSize,
+			DetachedCriteria criteria);
+	public List<Teacher> getTeacherBySchool(String schoolName);
+	public Teacher teacherLogin(Teacher teacher);
 	
 	//获取作业信息批改
 	

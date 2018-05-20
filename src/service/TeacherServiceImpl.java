@@ -2,10 +2,12 @@ package service;
 
 import java.util.List;
 
+import org.hibernate.criterion.DetachedCriteria;
 import org.springframework.transaction.annotation.Transactional;
 
 import dao.TeacherDao;
 import domain.Homework;
+import domain.PageBean;
 import domain.Student;
 import domain.Teacher;
 @Transactional
@@ -86,6 +88,31 @@ public class TeacherServiceImpl implements TeacherService {
 		// TODO Auto-generated method stub
 
 		homeworkService.saveHomework(homework);
+	}
+
+	@Override
+	public List<String> findSchools() {
+		// TODO Auto-generated method stub
+	    return teacherDao.findSchools();
+	}
+
+	@Override
+	public PageBean<Teacher> findByPage(Integer pageCode, Integer pageSize,
+			DetachedCriteria criteria) {
+		// TODO Auto-generated method stub
+		return teacherDao.findByPage(pageCode,pageSize,criteria);
+	}
+
+	@Override
+	public List<Teacher> getTeacherBySchool(String schoolName) {
+		// TODO Auto-generated method stub
+		return teacherDao.getTeacherBySchool(schoolName);
+	}
+
+	@Override
+	public Teacher teacherLogin(Teacher teacher) {
+		// TODO Auto-generated method stub
+		return teacherDao.teacherLogin(teacher.getTeacherId(),teacher.getPassword());
 	}
 
 
