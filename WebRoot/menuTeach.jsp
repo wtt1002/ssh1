@@ -163,7 +163,7 @@ A.active {
 														target=main>－ 学生管理</A></TD>
 												</TR>
 												<TR>
-													<TD class=menuSmall><A class=style2 href="${pageContext.request.contextPath }/jsp/teacher/add.jsp"
+													<TD class=menuSmall><A class=style2 href="${pageContext.request.contextPath }/jsp/homework/add.jsp"
 														target=main>－ 发布作业</A></TD>
 												</TR>
 												<TR>
