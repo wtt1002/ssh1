@@ -10,6 +10,17 @@
 <LINK href="${pageContext.request.contextPath }/css/Manage.css" type=text/css
 	rel=stylesheet>
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath }/js/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath }/js/ueditor.all.min.js"> </script>
+    <!--建议手动加在语言，避免在ie下有时因为加载语言失败导致编辑器加载失败-->
+    <!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
+<script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath }/lang/zh-cn/zh-cn.js"></script>
+
+<style type="text/css">
+        div{
+            width:100%;
+        }
+</style>
 <SCRIPT language=javascript>
 	// 提交分页的查询的表单
 	function to_page(page){
@@ -67,33 +78,6 @@
 		//alert("结束了");
 	});
 	
-	//根据用户类型显示不同的界面
-	$(function(){
-	     var usertype = "${userType}";
-	     //alert("wtttrejgpwiogjwip:"+usertype);
-	     if (usertype == "manager"){
-	     	var tableT = document.getElementById("design4Teacher");
-	     	tableT.style.display="none";
-	     	var tableM = document.getElementById("design4Manager");
-	     	tableM.style.display="";
-
-	     }
-	     if (usertype == "teacher"){
-	     	var tableM = document.getElementById("design4Manager");
-	     	tableM.style.display="none";
-	     	var tableT = document.getElementById("design4Teacher");
-	     	tableT.style.display="";
-	     	//var formCus = document.getElementById("customerForm")
-	     	//var options=$("#courseId  option:selected"); //获取选中的项
-			//var courseid = $("#courseId option:selected").val();
-			//alert("courseid:"+courseid);
-	     	//formCus.action = "${pageContext.request.contextPath }/score_getStudentsByCourse.action?courseId="+courseid;
-	     	//var teacherid = "${existTeacher.teacherName}";    	
-	     	//getCoursesByTeacher(teacherid);
-	     	
-	     }
-	});
-	
 
 	
 	//管理员模式
@@ -106,7 +90,6 @@
 		        var rollYear = $("#rollYear").val();
 				//var schoolType = $(this).val();
 				$("#clazzId").val("").trigger("change");
-				 //alert("有变动"+schoolName+".."+rollYear);
 				if (schoolName == "" || rollYear == ""){
 				     //alter("什么鬼");
 					 $("#clazzId").empty().append('<option value="" >- 请选择 -</option>');
@@ -145,8 +128,9 @@
 <META content="MSHTML 6.00.2900.3492" name=GENERATOR>
 </HEAD>
 <BODY>
+	
 	<FORM id="customerForm" name="customerForm"
-		action="#"
+		action="${pageContext.request.contextPath }/homework_add.action"
 		method=post onclick="changeActionUrl()"> 
 		
 		<TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
@@ -169,7 +153,7 @@
 					<TD vAlign=top width="100%" bgColor=#ffffff>
 						<TABLE cellSpacing=0 cellPadding=5 width="100%" border=0>
 							<TR>
-								<TD class=manageHead>当前位置：学生管理 &gt; 学生维护</TD>
+								<TD class=manageHead>当前位置：发布作业 &gt; 布置作业</TD>
 							</TR>
 							<TR>
 								<TD height=2></TD>
@@ -198,64 +182,34 @@
 							    
 								<TR>
 									<TD>
-										<TABLE cellSpacing=0 cellPadding=5  border=0>
-						  
-						   <TR>
-								<td>作业标题：</td>
-								<td>
-								<INPUT class=textbox id=sChannel2
-														style="WIDTH: 180px" maxLength=50 name="courseName">
-								</td>
-							</TR>
-														<TR>
-								<td>截止时间 ：</td>
-								<td>
-									<INPUT class=textbox id=sChannel2
-														style="WIDTH: 180px" maxLength=50 name="courseId">
-								</td>
-
-							</TR>	
-							<TR>
-							<td>上传附件：</td>
-							  <td>
-								<INPUT type="file" name="myfile">
-
-								</td>
-
-							</TR>
-							<TR>
-								<td colspan="2">作业说明 ：</td>
-								<td>
-
-								</td>
-
-							</TR>	
-							<tr>
-								<td colspan="2">
-							 		<input type="textbox" style="WIDTH: 380px" maxLength=50>
-							 	</td>
-							</tr>
-							<tr>
-								<td></td>
-								<td rowspan=2>
-								<INPUT class=button id=sButton2 type=submit
+									<label>课程标题：</label>
+											<INPUT class=textbox id=courseName style="WIDTH: 180px" maxLength=50 name="courseName">
+									<label>截止时间：</label>
+											<INPUT class=textbox id=deadline style="WIDTH: 180px" maxLength=50 name="deadline">
+						  			<label>上传附件：</label>
+											<INPUT type="file" name="myfile">
+									<INPUT class=button id=sButton2 type=submit
 														value=" 保存 " name=sButton2>
-								</td>
-							</tr>
-						</TABLE>
 									</TD>
 								</TR>
-								
-								<TR>
-									
-								</TR>
-							</TBODY>
-						</TABLE>
-					</TD>
-					<TD width=15 background="${pageContext.request.contextPath }/images/new_023.jpg"><IMG
-						src="${pageContext.request.contextPath }/images/new_023.jpg" border=0></TD>
-				</TR>
+								<tr>
+									<td>
+										<label>作业要求：</label>
+									</td>
+								</tr>
+
 			</TBODY>
+		</TABLE>
+		<table>
+			<div>
+   					<script id="editor" type="text/plain" style="width:1024px;height:500px;"></script>
+			</div>
+		</table>
+		</TD>
+		<TD width=15 background="${pageContext.request.contextPath }/images/new_023.jpg">
+					<IMG src="${pageContext.request.contextPath }/images/new_023.jpg" border=0></TD>
+		</TR>
+		</TBODY>
 		</TABLE>
 		<TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
 			<TBODY>
@@ -270,5 +224,117 @@
 			</TBODY>
 		</TABLE>
 	</FORM>
+	
+	<script type="text/javascript">
+
+    //实例化编辑器
+    //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+    var ue = UE.getEditor('editor');
+    function isFocus(e){
+        alert(UE.getEditor('editor').isFocus());
+        UE.dom.domUtils.preventDefault(e)
+    }
+    function setblur(e){
+        UE.getEditor('editor').blur();
+        UE.dom.domUtils.preventDefault(e)
+    }
+    function insertHtml() {
+        var value = prompt('插入html代码', '');
+        UE.getEditor('editor').execCommand('insertHtml', value)
+    }
+    function createEditor() {
+        enableBtn();
+        UE.getEditor('editor');
+    }
+    function getAllHtml() {
+        alert(UE.getEditor('editor').getAllHtml())
+    }
+    function getContent() {
+        var arr = [];
+        arr.push("使用editor.getContent()方法可以获得编辑器的内容");
+        arr.push("内容为：");
+        arr.push(UE.getEditor('editor').getContent());
+        alert(arr.join("\n"));
+    }
+    function getPlainTxt() {
+        var arr = [];
+        arr.push("使用editor.getPlainTxt()方法可以获得编辑器的带格式的纯文本内容");
+        arr.push("内容为：");
+        arr.push(UE.getEditor('editor').getPlainTxt());
+        alert(arr.join('\n'))
+    }
+    function setContent(isAppendTo) {
+        var arr = [];
+        arr.push("使用editor.setContent('欢迎使用ueditor')方法可以设置编辑器的内容");
+        UE.getEditor('editor').setContent('欢迎使用ueditor', isAppendTo);
+        alert(arr.join("\n"));
+    }
+    function setDisabled() {
+        UE.getEditor('editor').setDisabled('fullscreen');
+        disableBtn("enable");
+    }
+
+    function setEnabled() {
+        UE.getEditor('editor').setEnabled();
+        enableBtn();
+    }
+
+    function getText() {
+        //当你点击按钮时编辑区域已经失去了焦点，如果直接用getText将不会得到内容，所以要在选回来，然后取得内容
+        var range = UE.getEditor('editor').selection.getRange();
+        range.select();
+        var txt = UE.getEditor('editor').selection.getText();
+        alert(txt)
+    }
+
+    function getContentTxt() {
+        var arr = [];
+        arr.push("使用editor.getContentTxt()方法可以获得编辑器的纯文本内容");
+        arr.push("编辑器的纯文本内容为：");
+        arr.push(UE.getEditor('editor').getContentTxt());
+        alert(arr.join("\n"));
+    }
+    function hasContent() {
+        var arr = [];
+        arr.push("使用editor.hasContents()方法判断编辑器里是否有内容");
+        arr.push("判断结果为：");
+        arr.push(UE.getEditor('editor').hasContents());
+        alert(arr.join("\n"));
+    }
+    function setFocus() {
+        UE.getEditor('editor').focus();
+    }
+    function deleteEditor() {
+        disableBtn();
+        UE.getEditor('editor').destroy();
+    }
+    function disableBtn(str) {
+        var div = document.getElementById('btns');
+        var btns = UE.dom.domUtils.getElementsByTagName(div, "button");
+        for (var i = 0, btn; btn = btns[i++];) {
+            if (btn.id == str) {
+                UE.dom.domUtils.removeAttributes(btn, ["disabled"]);
+            } else {
+                btn.setAttribute("disabled", "true");
+            }
+        }
+    }
+    function enableBtn() {
+        var div = document.getElementById('btns');
+        var btns = UE.dom.domUtils.getElementsByTagName(div, "button");
+        for (var i = 0, btn; btn = btns[i++];) {
+            UE.dom.domUtils.removeAttributes(btn, ["disabled"]);
+        }
+    }
+
+    function getLocalData () {
+        alert(UE.getEditor('editor').execCommand( "getlocaldata" ));
+    }
+
+    function clearLocalData () {
+        UE.getEditor('editor').execCommand( "clearlocaldata" );
+        alert("已清空草稿箱")
+    }
+</script>
 </BODY>
 </HTML>
