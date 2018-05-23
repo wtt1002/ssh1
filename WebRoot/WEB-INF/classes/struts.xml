@@ -54,6 +54,9 @@
 			<result name="error">/jsp/error.jsp</result>
 			<result name="initUpdate">/jsp/course/edit.jsp</result>
 		</action>
+		
+		<action name="homework_*" class="homeworkAction" method="{1}">
+		</action>
 	</package>
     
 </struts>

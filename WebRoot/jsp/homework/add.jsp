@@ -131,8 +131,8 @@
 	
 	<FORM id="customerForm" name="customerForm"
 		action="${pageContext.request.contextPath }/homework_add.action"
-		method=post onclick="changeActionUrl()"> 
-		
+		method=post> 
+		<input type="hidden" name="teacherId" value="${existTeacher.teacherId }"/>
 		<TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
 			<TBODY>
 				<TR>
@@ -182,10 +182,10 @@
 							    
 								<TR>
 									<TD>
-									<label>课程标题：</label>
-											<INPUT class=textbox id=courseName style="WIDTH: 180px" maxLength=50 name="courseName">
+									<label>作业标题：</label>
+											<INPUT class=textbox id="homeworkName" style="WIDTH: 180px" maxLength=50 name="homeworkName">
 									<label>截止时间：</label>
-											<INPUT class=textbox id=deadline style="WIDTH: 180px" maxLength=50 name="deadline">
+											<INPUT class=textbox id="deadlineDate" style="WIDTH: 180px" maxLength=50 name="deadlineDate">
 						  			<label>上传附件：</label>
 											<INPUT type="file" name="myfile">
 									<INPUT class=button id=sButton2 type=submit

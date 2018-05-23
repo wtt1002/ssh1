@@ -8,6 +8,7 @@ public class Homework {
 
 	private Integer UID;
 	private String homeworkId;
+	private String homeworkName;
 	private String hworkInfoId;
 	private String teacherId;
 	private String courseId;
@@ -39,6 +40,13 @@ public class Homework {
 	}
 	public void setHomeworkId(String homeworkId) {
 		this.homeworkId = homeworkId;
+	}
+	
+	public String getHomeworkName() {
+		return homeworkName;
+	}
+	public void setHomeworkName(String homeworkName) {
+		this.homeworkName = homeworkName;
 	}
 	public String getHworkInfoId() {
 		return hworkInfoId;

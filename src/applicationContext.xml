@@ -76,6 +76,13 @@
 	<bean id="scoreAction" class="web.action.ScoreAction" scope="prototype">
 		<property name="scoreService" ref="scoreService"></property>
 	</bean>
+	<bean id="homeworkAction" class="web.action.HomeworkAction">
+		<property name="courseService" ref="courseService"/>
+		<property name="homeworkService" ref="homeworkService"/>
+		<property name="teacherService" ref="teacherService"/>
+	</bean>
+	
+	
 	
 	
 				<!-- manager配置 -->
