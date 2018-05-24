@@ -4,6 +4,7 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 	
 <struts>
+<constant name="struts.multipart.maxSize" value="20971520"></constant>
 	<package name="crm" extends="struts-default" namespace="/">
 		<global-results>
 			<result name="login" type="redirect">/login.jsp</result>

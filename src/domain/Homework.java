@@ -20,6 +20,14 @@ public class Homework {
 	//private Teacher teacher;
 	private Course course;
 	
+	private String filePath;
+	
+	public String getFilePath() {
+		return filePath;
+	}
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
 	public Course getCourse() {
 		return course;
 	}

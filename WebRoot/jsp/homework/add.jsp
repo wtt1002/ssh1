@@ -131,7 +131,7 @@
 	
 	<FORM id="customerForm" name="customerForm"
 		action="${pageContext.request.contextPath }/homework_add.action"
-		method=post> 
+		method=post enctype="multipart/form-data"> 
 		<input type="hidden" name="teacherId" value="${existTeacher.teacherId }"/>
 		<TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
 			<TBODY>
@@ -187,7 +187,7 @@
 									<label>截止时间：</label>
 											<INPUT class=textbox id="deadlineDate" style="WIDTH: 180px" maxLength=50 name="deadlineDate">
 						  			<label>上传附件：</label>
-											<INPUT type="file" name="myfile">
+											<INPUT type="file" name="arrangeWork">
 									<INPUT class=button id=sButton2 type=submit
 														value=" 保存 " name=sButton2>
 									</TD>
