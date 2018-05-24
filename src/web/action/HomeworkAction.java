@@ -94,7 +94,7 @@ public class HomeworkAction extends ActionSupport implements ModelDriven<Homewor
 		System.out.println(dateString);
 		homework.setHomeworkId(dateString);
 		homeworkService.addHomework(homework);
-		return NONE;
+		return "save";
 	}
 
 }

@@ -18,6 +18,7 @@
 		<property name="deadlineDate" column="deadlineDate"/>
 		<property name="description" column="description"/>
 		<property name="filePath" column="filePath"/>
+		<property name="homeworkName" column="homeworkName"/>
 		
 		            <!-- teacher  homwork:1-* 配置多方 -->
         <many-to-one name="teacher" class="domain.Teacher" column="teacher_id" cascade="save-update"/>
